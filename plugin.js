@@ -30,6 +30,12 @@ jQuery(document).ready(function($){
        $("[name='"+fields.endereco+"']").val(response.data.address);
        $("[name='"+fields.bairro+"']").val(response.data.neighborhood);
        $("[name='"+fields.estado+"']").val(response.data.state).trigger("change");
-    });
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+    //handle error here
+      $.unblockUI();
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+  });
   }
 });
