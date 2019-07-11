@@ -1,5 +1,4 @@
-# autofilladdressbycepwoocommerce
-Auto fill address using CEP and Correios API 
+# Auto fill address using CEP and Correios API 
 
 # You must install Correios for Woocommerce to use this script.
 https://wordpress.org/plugins/woocommerce-correios/
