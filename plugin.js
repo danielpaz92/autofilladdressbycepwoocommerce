@@ -20,11 +20,9 @@ jQuery(document).ready(function($){
       method: 'GET', 
       dataType: "JSON",
        beforeSend: function () {
-        // BLOCK SCREEN WHILE SEARCH ADDRESS
          $.blockUI({ message: '<strong>Carregando dados do CEP ...</strong>' });
       }
     }).done(function(response) {
-      // UNBLOCK SCREEN AND FILL FIELDS
        if(response.success)
        {
          $.unblockUI();
@@ -38,6 +36,12 @@ jQuery(document).ready(function($){
             timeout: 2000
         });
        }
-    });
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+    //handle error here
+      $.unblockUI();
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+  });
   }
 });
