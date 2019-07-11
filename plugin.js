@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
   function autoFillAddress(fields, cep)
   {
     jQuery.ajax({
-      url: 'wc-ajax=correios_autofill_address&postcode='+cep,
+      url: window.location.origin+'?wc-ajax=correios_autofill_address&postcode='+cep,
       method: 'GET', 
       dataType: "JSON",
        beforeSend: function () {
