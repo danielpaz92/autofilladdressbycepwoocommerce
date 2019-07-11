@@ -25,17 +25,19 @@ jQuery(document).ready(function($){
       }
     }).done(function(response) {
       // UNBLOCK SCREEN AND FILL FIELDS
-       $.unblockUI();
-       $("[name='"+fields.cidade+"']").val(response.data.city);
-       $("[name='"+fields.endereco+"']").val(response.data.address);
-       $("[name='"+fields.bairro+"']").val(response.data.neighborhood);
-       $("[name='"+fields.estado+"']").val(response.data.state).trigger("change");
-    }).fail(function(jqXHR, textStatus, errorThrown) {
-    //handle error here
-      $.unblockUI();
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
-  });
+       if(response.success)
+       {
+         $.unblockUI();
+         $("[name='"+fields.cidade+"']").val(response.data.city);
+         $("[name='"+fields.endereco+"']").val(response.data.address);
+         $("[name='"+fields.bairro+"']").val(response.data.neighborhood);
+         $("[name='"+fields.estado+"']").val(response.data.state).trigger("change");
+       } else {
+         $.blockUI({ 
+            message: '<strong>Cep inválido!</strong>', 
+            timeout: 2000
+        });
+       }
+    });
   }
 });
